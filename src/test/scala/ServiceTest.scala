@@ -1,10 +1,11 @@
 
-import akka.http.model.{HttpCharsets, HttpCharset, MediaTypes}
+import akka.http.model.{HttpCharsets, MediaTypes}
 import akka.http.model.StatusCodes._
 import akka.http.testkit.ScalatestRouteTest
-import org.scalatest.{Matchers, WordSpec}
+import http.Service
+import org.scalatest.{Matchers, WordSpecLike}
 
-class ServiceTest extends WordSpec with Matchers with ScalatestRouteTest with Service {
+class ServiceTest extends Service with WordSpecLike with Matchers with ScalatestRouteTest {
   override val host: String = ""
   override val port: Int = 64000
 
@@ -20,8 +21,8 @@ class ServiceTest extends WordSpec with Matchers with ScalatestRouteTest with Se
         responseAs[String] should equal (hello)
       }
     }
-    val faild = "The requested resource could not be found."
-    s"respond '$faild'" in {
+
+    s"be rejected'" in {
       Get("/sdfs") ~> route ~> check(rejections)
     }
   }
