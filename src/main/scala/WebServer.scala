@@ -1,5 +1,14 @@
-import http.HttpService
+import akka.actor.ActorSystem
+import akka.stream.ActorFlowMaterializer
+import com.typesafe.config.ConfigFactory
+import http.Service
 
 object WebServer extends App {
-  HttpService.run
+
+  implicit val system = ActorSystem()
+  implicit val materializer = ActorFlowMaterializer()
+
+  val config = ConfigFactory.load
+
+  Service.run(config)
 }
