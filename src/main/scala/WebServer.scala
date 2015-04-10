@@ -1,7 +1,7 @@
 import akka.actor.ActorSystem
 import akka.stream.ActorFlowMaterializer
 import com.typesafe.config.ConfigFactory
-import http.HttpService$
+import http.HttpService
 
 object WebServer extends App {
 
