@@ -11,7 +11,7 @@ import com.typesafe.config.Config
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
 
-class Service private (config: Config)(implicit system: ActorSystem, materializer: ActorFlowMaterializer) extends Routing {
+class HttpService private (config: Config)(implicit system: ActorSystem, materializer: ActorFlowMaterializer) extends Routing {
 
   val host: String = config.getString("akka.http.interface")
   val port: Int = config.getInt("akka.http.port")
@@ -28,12 +28,12 @@ class Service private (config: Config)(implicit system: ActorSystem, materialize
   println(s"start on $host:$port")
 }
 
-object Service {
-  private var service: Option[Service] = None
+object HttpService {
+  private var service: Option[HttpService] = None
 
-  def getService: Option[Service] = service
+  def getService: Option[HttpService] = service
 
   def run(config: Config)(implicit system: ActorSystem, materializer: ActorFlowMaterializer) {
-    service.orElse{service = Option(new Service(config));service}
+    service.orElse{service = Option(new HttpService(config));service}
   }
 }

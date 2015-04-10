@@ -1,7 +1,7 @@
 import akka.actor.ActorSystem
 import akka.stream.ActorFlowMaterializer
 import com.typesafe.config.ConfigFactory
-import http.Service
+import http.HttpService$
 
 object WebServer extends App {
 
@@ -10,5 +10,5 @@ object WebServer extends App {
 
   val config = ConfigFactory.load
 
-  Service.run(config)
+  HttpService.run(config)
 }

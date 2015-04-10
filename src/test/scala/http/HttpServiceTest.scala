@@ -7,7 +7,7 @@ import com.typesafe.config.{Config, ConfigFactory}
 import org.scalatest.{BeforeAndAfterAll, Matchers, WordSpecLike}
 import org.scalatest.OptionValues._
 
-class ServiceTest extends TestKit(ActorSystem("ServiceTest")) with WordSpecLike with Matchers with BeforeAndAfterAll {
+class HttpServiceTest extends TestKit(ActorSystem("ServiceTest")) with WordSpecLike with Matchers with BeforeAndAfterAll {
 
   override def afterAll = system.shutdown()
 
@@ -18,8 +18,8 @@ class ServiceTest extends TestKit(ActorSystem("ServiceTest")) with WordSpecLike 
 
   "Http Service " should {
     s"be running on port $port" in {
-      Service.run(config)
-      Service.getService.value.port shouldBe port
+      HttpService.run(config)
+      HttpService.getService.value.port shouldBe port
     }
   }
 
