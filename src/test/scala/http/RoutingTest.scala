@@ -6,6 +6,8 @@ import akka.http.model.{HttpCharsets, MediaTypes}
 import akka.http.testkit.ScalatestRouteTest
 import org.scalatest.{Matchers, WordSpecLike}
 
+import scala.xml.pull.XMLEvent
+
 class RoutingTest extends Routing with WordSpecLike with Matchers with ScalatestRouteTest {
 
   import TildeArrow._
@@ -21,7 +23,14 @@ class RoutingTest extends Routing with WordSpecLike with Matchers with Scalatest
       }
     }
 
-    s"be rejected'" in {
+    "be serve html file" in {
+      Get("/index") ~> route ~> check {
+        status shouldBe OK
+        responseAs[String] should include ("<title>Hello World</title>")
+      }
+    }
+
+    "be rejected'" in {
       Get("/sdfs") ~> route ~> check(rejections)
     }
   }

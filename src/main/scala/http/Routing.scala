@@ -4,7 +4,7 @@ import akka.http.server._
 import akka.http.server.Directives._
 import scala.concurrent.ExecutionContext.Implicits.global
 
-trait Routing { 
+trait Routing {
 
   val route: Route =
     path("") {
@@ -13,6 +13,8 @@ trait Routing {
           "Hello world!"
         }
       }
+    } ~ path("index") {
+      getFromResource("view/index.html")
     }
 
 }
