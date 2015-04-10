@@ -11,21 +11,12 @@ import akka.stream.scaladsl.{RunnableFlow, Sink, Source}
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
 
-abstract class Service {
+abstract class Service extends Routing {
   implicit val system: ActorSystem
   implicit val materializer: ActorFlowMaterializer
 
   val host: String
   val port: Int
-
-  val route: Route =
-    path("") {
-      get {
-        complete {
-          "Hello world!"
-        }
-      }
-    }
 
   lazy val requestHandler: HttpRequest => Future[HttpResponse] = Route.asyncHandler(route)
 
