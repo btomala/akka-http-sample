@@ -12,26 +12,34 @@ class RoutingTest extends Routing with WordSpecLike with Matchers with Scalatest
 
   import TildeArrow._
 
-  "Service" should {
+  "Routing" should {
     val hello = "Hello world!"
-    s"respond '$hello'" in {
-      Get("/") ~> route ~> check {
-        status shouldBe OK
-        mediaType shouldBe MediaTypes.`text/plain`
-        charset shouldBe HttpCharsets.`UTF-8`
-        responseAs[String] should equal (hello)
+    s"respond '$hello'" when {
+      "is asked for main page" in {
+        Get("/") ~> route ~> check {
+          status shouldBe OK
+          mediaType shouldBe MediaTypes.`text/plain`
+          charset shouldBe HttpCharsets.`UTF-8`
+          responseAs[String] should equal (hello)
+        }
       }
     }
 
-    "be serve html file" in {
-      Get("/index") ~> route ~> check {
-        status shouldBe OK
-        responseAs[String] should include ("<title>Hello World</title>")
+    "be serve html file" when {
+      "is asked for index page" in {
+        Get("/index") ~> route ~> check {
+          status shouldBe OK
+          mediaType shouldBe MediaTypes.`text/html`
+          charset shouldBe HttpCharsets.`UTF-8`
+          responseAs[String] should include ("<title>Hello World</title>")
+        }
       }
     }
 
-    "be rejected'" in {
-      Get("/sdfs") ~> route ~> check(rejections)
+    "be rejected" when {
+      "address is unknonwn" in {
+        Get("/sdfs") ~> route ~> check(rejections)
+      }
     }
   }
 }
