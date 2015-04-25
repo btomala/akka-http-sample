@@ -10,5 +10,5 @@ object WebServer extends App {
 
   val config = ConfigFactory.load
 
-  HttpService.run(config)
+  HttpService.run(config)(system, materializer)
 }
