@@ -1,3 +1,5 @@
+net.virtualvoid.sbt.graph.Plugin.graphSettings
+
 name := "akka-http-sample"
 
 version := "1.0-SNAPSHOT"
