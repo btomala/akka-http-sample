@@ -1,10 +1,14 @@
 # akka-http-sample
 Akka http sample application
 
+DONE
+----
+- plain text response
+- html
+
 TODO
 ----
 - logging
-- html
 - twirl?
 - json API
 - websocket?
