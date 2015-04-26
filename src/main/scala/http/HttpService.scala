@@ -34,6 +34,6 @@ object HttpService {
   def getService: Option[HttpService] = service
 
   def run(config: Config)(implicit system: ActorSystem, materializer: ActorFlowMaterializer) {
-    service.orElse{service = Option(new HttpService(config));service}
+    service = service.orElse(Option(new HttpService(config)))
   }
 }
