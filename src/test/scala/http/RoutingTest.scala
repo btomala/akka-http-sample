@@ -1,12 +1,10 @@
 package http
 
 
-import akka.http.model.StatusCodes._
 import akka.http.model.{HttpCharsets, MediaTypes}
+import akka.http.model.StatusCodes._
 import akka.http.testkit.ScalatestRouteTest
 import org.scalatest.{Matchers, WordSpecLike}
-
-import scala.xml.pull.XMLEvent
 
 class RoutingTest extends Routing with WordSpecLike with Matchers with ScalatestRouteTest {
 
@@ -16,7 +14,7 @@ class RoutingTest extends Routing with WordSpecLike with Matchers with Scalatest
     val hello = "Hello world!"
     s"respond '$hello'" when {
       "is asked for main page" in {
-        Get("/") ~> route ~> check {
+        Get("/hello/world") ~> route ~> check {
           status shouldBe OK
           mediaType shouldBe MediaTypes.`text/plain`
           charset shouldBe HttpCharsets.`UTF-8`

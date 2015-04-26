@@ -4,11 +4,11 @@ Akka http sample application
 DONE
 ----
 - plain text response
+- logging
 - html
 
 TODO
 ----
-- logging
 - twirl?
 - json API
 - websocket?

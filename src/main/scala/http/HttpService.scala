@@ -1,5 +1,8 @@
 package http
 
+import scala.concurrent.Future
+import scala.concurrent.ExecutionContext.Implicits.global
+
 import akka.actor.ActorSystem
 import akka.http.Http
 import akka.http.model._
@@ -7,9 +10,6 @@ import akka.http.server._
 import akka.stream.ActorFlowMaterializer
 import akka.stream.scaladsl.{RunnableFlow, Sink, Source}
 import com.typesafe.config.Config
-
-import scala.concurrent.ExecutionContext.Implicits.global
-import scala.concurrent.Future
 
 class HttpService private (config: Config)(implicit system: ActorSystem, materializer: ActorFlowMaterializer) extends Routing {
 
@@ -25,7 +25,8 @@ class HttpService private (config: Config)(implicit system: ActorSystem, materia
     Sink.foreach(connection => connection handleWithAsyncHandler requestHandler))
 
   val bindingFuture = runnableFlow.run()
-  println(s"start on $host:$port")
+
+  system.log.info(s"start on $host:$port")
 }
 
 object HttpService {
