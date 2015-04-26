@@ -4,8 +4,8 @@ Akka http sample application
 DONE
 ----
 - response:
--- plain text
--- static html file
+    - plain text
+    - static html file
 - logging request/response
 
 
