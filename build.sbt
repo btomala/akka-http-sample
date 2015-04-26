@@ -10,7 +10,7 @@ val akkaVersion = "2.3.9"
 val akkaHttpVersion = "1.0-M5"
 val scalaTestVersion = "2.2.4"
 
-lazy val root = (project in file(".")).enablePlugins(SbtTwirl)
+lazy val `akka-http-sample` = (project in file(".")).enablePlugins(SbtTwirl)
 
 libraryDependencies ++= Seq(
     "com.typesafe.akka" %% "akka-actor"                        % akkaVersion,
