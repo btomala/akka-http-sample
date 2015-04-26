@@ -3,14 +3,17 @@ Akka http sample application
 
 DONE
 ----
-- plain text response
-- logging
-- html
+- response:
+-- plain text
+-- static html file
+- logging request/response
+
 
 TODO
 ----
 - twirl?
 - json API
 - web socket?
-- selenium
-- gatling
+- selenium test
+- gatling test?
+- request logging to db?
