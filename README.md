@@ -11,6 +11,6 @@ TODO
 ----
 - twirl?
 - json API
-- websocket?
+- web socket?
 - selenium
 - gatling

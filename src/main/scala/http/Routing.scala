@@ -9,7 +9,7 @@ import akka.http.server.directives.LoggingMagnet._
 trait Routing {
 
   val route: Route =
-  logRequestResult(forRequestResponseFromMarkerAndLevel((s"[${this.getClass.getSimpleName}]", DebugLevel))) {
+  logRequestResult(forRequestResponseFromMarker(s"[${this.getClass.getSimpleName}]")) {
     path("hello" / "world") {
       get {
         complete {
