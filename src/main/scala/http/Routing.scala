@@ -1,9 +1,9 @@
 package http
 
-import akka.event.Logging._
+import scala.concurrent.ExecutionContext.Implicits.global
+
 import akka.http.server._
 import akka.http.server.Directives._
-import scala.concurrent.ExecutionContext.Implicits.global
 import akka.http.server.directives.LoggingMagnet._
 
 trait Routing {
