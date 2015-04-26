@@ -14,6 +14,7 @@ lazy val `akka-http-sample` = (project in file(".")).enablePlugins(SbtTwirl)
 
 libraryDependencies ++= Seq(
     "com.typesafe.akka" %% "akka-actor"                        % akkaVersion,
+    "com.typesafe.akka" %% "akka-kernel"                       % akkaVersion,
     "com.typesafe.akka" %% "akka-http-core-experimental"       % akkaHttpVersion,
     "com.typesafe.akka" %% "akka-http-experimental"            % akkaHttpVersion,
     "com.typesafe.akka" %% "akka-http-testkit-experimental"    % akkaHttpVersion,
