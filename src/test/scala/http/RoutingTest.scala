@@ -1,9 +1,8 @@
 package http
 
-
-import akka.http.model.{HttpCharsets, MediaTypes}
-import akka.http.model.StatusCodes._
-import akka.http.testkit.ScalatestRouteTest
+import akka.http.scaladsl.model.{HttpCharsets, MediaTypes}
+import akka.http.scaladsl.model.StatusCodes._
+import akka.http.scaladsl.testkit.ScalatestRouteTest
 import org.scalatest.{Matchers, WordSpecLike}
 
 class RoutingTest extends Routing with WordSpecLike with Matchers with ScalatestRouteTest {
@@ -13,7 +12,7 @@ class RoutingTest extends Routing with WordSpecLike with Matchers with Scalatest
   "Routing" should {
     val hello = "Hello world!"
     s"respond '$hello'" when {
-      "is asked for main page" in {
+      "is asked for /hello/world" in {
         Get("/hello/world") ~> route ~> check {
           status shouldBe OK
           mediaType shouldBe MediaTypes.`text/plain`
@@ -23,8 +22,8 @@ class RoutingTest extends Routing with WordSpecLike with Matchers with Scalatest
       }
     }
 
-    "be serve html file" when {
-      "is asked for index page" in {
+    "be serve index.html file" when {
+      "is asked for /index" in {
         Get("/index") ~> route ~> check {
           status shouldBe OK
           mediaType shouldBe MediaTypes.`text/html`
@@ -34,8 +33,8 @@ class RoutingTest extends Routing with WordSpecLike with Matchers with Scalatest
       }
     }
 
-    "be rejected" when {
-      "address is unknonwn" in {
+    "reject request" when {
+      "path is unknonwn" in {
         Get("/sdfs") ~> route ~> check(rejections)
       }
     }

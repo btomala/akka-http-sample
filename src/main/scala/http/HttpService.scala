@@ -4,9 +4,9 @@ import scala.concurrent.Future
 import scala.concurrent.ExecutionContext.Implicits.global
 
 import akka.actor.ActorSystem
-import akka.http.Http
-import akka.http.model._
-import akka.http.server._
+import akka.http.scaladsl.Http
+import akka.http.scaladsl.model._
+import akka.http.scaladsl.server._
 import akka.stream.ActorFlowMaterializer
 import akka.stream.scaladsl.{RunnableFlow, Sink, Source}
 import com.typesafe.config.Config

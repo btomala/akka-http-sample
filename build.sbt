@@ -15,7 +15,7 @@ val scalaTestV = "2.2.4"
 lazy val `akka-http-sample` = (project in file(".")).enablePlugins(SbtTwirl)
 
 libraryDependencies ++= Seq(
-    "com.typesafe.akka" %% "akka-kernel"                     % akkaV,
-    "com.typesafe.akka" %% "akka-http-scala-experimental"    % akkaHttpV,
-    "org.scalatest"     %% "scalatest"                       % scalaTestV % "test"
+    "com.typesafe.akka" %% "akka-http-scala-experimental"          % akkaHttpV,
+    "com.typesafe.akka" %% "akka-http-testkit-scala-experimental"  % akkaHttpV % "test",
+    "org.scalatest"     %% "scalatest"                             % scalaTestV % "test"
   )

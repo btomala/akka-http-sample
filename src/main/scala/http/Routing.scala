@@ -2,14 +2,14 @@ package http
 
 import scala.concurrent.ExecutionContext.Implicits.global
 
-import akka.http.server._
-import akka.http.server.Directives._
-import akka.http.server.directives.LoggingMagnet._
+import akka.http.scaladsl.server._
+import akka.http.scaladsl.server.Directives._
+import akka.http.scaladsl.server.directives.LoggingMagnet._
 
 trait Routing {
 
   val route: Route =
-  logRequestResult(forRequestResponseFromMarker(s"[${this.getClass.getSimpleName}]")) {
+  logRequestResult(forRequestResponseFromMarker("")) {
     path("hello" / "world") {
       get {
         complete {
@@ -18,6 +18,12 @@ trait Routing {
       }
     } ~ path("index") {
       getFromResource("view/index.html")
+    } ~ path("json" / "api" / "user") {
+      get {
+        complete {
+          """{ "test" : "json" }"""
+        }
+      }
     }
   }
 
