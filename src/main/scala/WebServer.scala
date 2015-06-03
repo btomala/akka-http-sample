@@ -12,6 +12,7 @@ object WebServer extends App {
 
   HttpService.run(config)(system, materializer)
 
-//  def shutdown = system.shutdown()
+  private def shutdown = system.shutdown()
+  sys.addShutdownHook(shutdown)
 
 }
