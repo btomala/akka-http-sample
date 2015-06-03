@@ -9,7 +9,7 @@ version := "1.0-SNAPSHOT"
 scalaVersion := "2.11.6"
 
 val akkaV      = "2.4-SNAPSHOT"
-val akkaHttpV  = "1.0-RC2"
+val akkaHttpV  = "1.0-RC3"
 val scalaTestV = "2.2.4"
 
 lazy val `akka-http-sample` = (project in file(".")).enablePlugins(SbtTwirl)
