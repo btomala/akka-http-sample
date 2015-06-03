@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/btomala/teapot.svg?branch=master)](https://travis-ci.org/btomala/teapot)
+
 # akka-http-sample
 Akka http sample application
 
