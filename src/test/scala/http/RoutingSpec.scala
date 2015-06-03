@@ -5,7 +5,7 @@ import akka.http.scaladsl.model.StatusCodes._
 import akka.http.scaladsl.testkit.ScalatestRouteTest
 import org.scalatest.{Matchers, WordSpecLike}
 
-class RoutingTest extends Routing with WordSpecLike with Matchers with ScalatestRouteTest {
+class RoutingSpec extends Routing with WordSpecLike with Matchers with ScalatestRouteTest {
 
   import TildeArrow._
 
