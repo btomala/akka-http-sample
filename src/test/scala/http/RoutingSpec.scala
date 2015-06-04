@@ -12,7 +12,7 @@ class RoutingSpec extends Routing with WordSpecLike with Matchers with Scalatest
   "Routing" should {
     val hello = "Hello world!"
     s"respond '$hello'" when {
-      "is asked for /hello/world" in {
+      "is asked on /hello/world" in {
         Get("/hello/world") ~> route ~> check {
           status shouldBe OK
           mediaType shouldBe MediaTypes.`text/plain`
@@ -23,12 +23,24 @@ class RoutingSpec extends Routing with WordSpecLike with Matchers with Scalatest
     }
 
     "be serve index.html file" when {
-      "is asked for /index" in {
+      "is asked on /index" in {
         Get("/index") ~> route ~> check {
           status shouldBe OK
           mediaType shouldBe MediaTypes.`text/html`
           charset shouldBe HttpCharsets.`UTF-8`
           responseAs[String] should include ("<title>Hello World</title>")
+        }
+      }
+    }
+
+    "be serve twirl.html file" when {
+      "is asked on /twirl" in {
+        Get("/domain") ~> route ~> check {
+          status shouldBe OK
+          mediaType shouldBe MediaTypes.`text/html`
+          charset shouldBe HttpCharsets.`UTF-8`
+          val response = responseAs[String]
+          response should include ("Bob")
         }
       }
     }

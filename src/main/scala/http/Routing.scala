@@ -1,6 +1,6 @@
 package http
 
-import scala.concurrent.ExecutionContext.Implicits.global
+import domain.Foo
 
 import akka.http.scaladsl.server._
 import akka.http.scaladsl.server.Directives._
@@ -22,6 +22,13 @@ trait Routing {
       get {
         complete {
           """{ "test" : "json" }"""
+        }
+      }
+    } ~ path("domain") {
+      import marshaller.TwirlMarshalling.twirlHtmlMarshaller
+      get {
+        complete {
+          html.twirl.render(Foo("Bob"))
         }
       }
     }

@@ -8,12 +8,12 @@ DONE
 - response:
     - plain text
     - static html file
+    - twirl
 - logging request/response
 
 
 TODO
 ----
-- twirl?
 - json API
 - web socket?
 - selenium test
