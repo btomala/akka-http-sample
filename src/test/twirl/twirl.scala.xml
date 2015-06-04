@@ -1,0 +1,2 @@
+@(foo: domain.Foo)
+<welcome>@foo.name</welcome>
