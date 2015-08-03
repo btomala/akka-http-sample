@@ -6,9 +6,8 @@ name := "akka-http-sample"
 
 version := "1.0-SNAPSHOT"
 
-scalaVersion := "2.11.6"
+scalaVersion := "2.11.7"
 
-val akkaV      = "2.4-SNAPSHOT"
 val akkaHttpV  = "1.0-RC3"
 val scalaTestV = "2.2.4"
 val playTwirlV = "1.1.1"
