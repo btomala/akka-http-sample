@@ -2,7 +2,7 @@ package marshaller
 
 import akka.actor.ActorSystem
 import akka.http.scaladsl.model.{HttpCharsets, MediaTypes, ResponseEntity}
-import akka.stream.ActorFlowMaterializer
+import akka.stream.ActorMaterializer
 import org.scalatest.{BeforeAndAfterAll, Matchers, WordSpec}
 import akka.http.scaladsl.marshalling.Marshal
 import scala.concurrent.duration.DurationInt
@@ -15,7 +15,7 @@ class TwirlMarshallingSpec extends WordSpec with TwirlMarshalling with Matchers 
   val timeout = 100 millis
 
   implicit val system = ActorSystem()
-  implicit val materializer = ActorFlowMaterializer()
+  implicit val materializer = ActorMaterializer()
 
   "TwirlMarshalling" should {
     "be enable to marshal twirl.scala.html to String" in {

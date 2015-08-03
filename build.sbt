@@ -8,7 +8,7 @@ version := "1.0-SNAPSHOT"
 
 scalaVersion := "2.11.7"
 
-val akkaHttpV  = "1.0-RC3"
+val akkaHttpV  = "1.0"
 val scalaTestV = "2.2.4"
 val playTwirlV = "1.1.1"
 

@@ -1,7 +1,7 @@
 package http
 
 import akka.actor.ActorSystem
-import akka.stream.ActorFlowMaterializer
+import akka.stream.ActorMaterializer
 import akka.testkit.TestKit
 import com.typesafe.config.{Config, ConfigFactory}
 import org.scalatest.{BeforeAndAfterAll, Matchers, WordSpecLike}
@@ -11,7 +11,7 @@ class HttpServiceSpec extends TestKit(ActorSystem("ServiceTest")) with WordSpecL
 
   override def afterAll = system.shutdown()
 
-  implicit val materializer = ActorFlowMaterializer()
+  implicit val materializer = ActorMaterializer()
 
   val port = 9999
   val config: Config = ConfigFactory.load

@@ -1,12 +1,12 @@
 import akka.actor.ActorSystem
-import akka.stream.ActorFlowMaterializer
+import akka.stream.ActorMaterializer
 import com.typesafe.config.ConfigFactory
 import http.HttpService
 
 object WebServer extends App {
 
   implicit val system = ActorSystem("akka-http-sample")
-  implicit val materializer = ActorFlowMaterializer()
+  implicit val materializer = ActorMaterializer()
 
   val config = ConfigFactory.load
 
