@@ -16,6 +16,3 @@ TODO
 ----
 - json API
 - web socket?
-- selenium test
-- gatling test?
-- request logging to db?
